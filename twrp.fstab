@@ -1,0 +1,6 @@
+/boot     vfat  /dev/block/mmcblk0p1  flags=backup=1
+/system   ext4  /dev/block/mmcblk0p2  flags=backup=1
+/vendor   ext4  /dev/block/mmcblk0p3  flags=backup=1
+/data     ext4  /dev/block/mmcblk0p4  flags=encryptable=footer;length=-16384
+
+/usb      auto  /dev/block/sda1       /dev/block/sda  flags=display="USB";storage;wipeingui;removable
