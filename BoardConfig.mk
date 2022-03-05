@@ -14,7 +14,28 @@
 # limitations under the License.
 #
 
--include device/brcm/rpi-common/BoardConfigCommon.mk
+# Platform
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RECOVERY := true
+
+TARGET_BOARD_PLATFORM := rpi
+
+# Binder
+TARGET_USES_64_BIT_BINDER := true
+
+# Partition sizes
+BOARD_FLASH_BLOCK_SIZE := 4096
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736 # 1536M
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 134217728 # 128M
+BOARD_VENDORIMAGE_PARTITION_SIZE := 268435456 # 256M
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USES_VENDORIMAGE := true
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
+TARGET_USERIMAGES_USE_EXT4 := true
+
+# Properties
+TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/system.prop
 
 DEVICE_PATH := device/brcm/rpi4
 
@@ -28,7 +49,7 @@ TARGET_CPU_VARIANT := cortex-a72
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := zImage
 TARGET_KERNEL_CONFIG := lineageos_rpi4_defconfig
-TARGET_KERNEL_SOURCE := kernel/brcm/rpi
+TARGET_KERNEL_SOURCE := kernel/arpi/rpi
 
 # Graphics
 BOARD_GPU_DRIVERS := v3d kmsro
